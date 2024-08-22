@@ -1,0 +1,19 @@
+.slide_wrapper {
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.slider {
+    height: 300px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    margin: 0 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.slider:hover {
+    transform: scale(1.05);
+}

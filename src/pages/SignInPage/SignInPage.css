@@ -1,0 +1,106 @@
+.wrapper_sign {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-color: #53c3dd;
+}
+
+.signin {
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+    margin-top: 5%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.left_item-sign {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title_sign {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-top: 25px;
+    margin-bottom: 10px;
+}
+
+.title_sign-sec {
+    font-size: 17px;
+    padding-bottom: 10px;
+}
+
+.sign_item {
+    width: 80%;
+    margin: 15px 0;
+}
+
+.sign_item>.ant-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.sign_item>.ant-input:placeholder-shown {
+    margin-bottom: 10px;
+    padding: 5px 5px;
+}
+
+.btn_login {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #ff424e;
+    border: 1px solid #ff424e;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.login_def {
+    color: blueviolet;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.login_def1 {
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.img_sign {
+    width: 80%;
+}
+
+.right_item-sign {
+    height: 500px;
+    background: linear-gradient(136deg, rgb(240, 248, 255) -1%, rgb(219, 238, 255) 85%);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.login_with>h3 {
+    font-size: 15px;
+    color: rgb(120, 120, 120);
+    display: inline-block;
+    background: rgb(255, 255, 255);
+    padding: 0px 20px;
+}
+
+.net_def {
+    font-size: 30px;
+    color: blueviolet;
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,22 @@
+.container_TypePage {
+    background-color: #efefef;
+}
+
+.wrapper_layout {
+    padding: 0 120px;
+    padding-top: 30px;
+    flex-wrap: nowrap;
+}
+
+.col_item {
+    background-color: #fff;
+    padding: 0 10px;
+    margin-right: 10px;
+    border-radius: 7px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}

@@ -1,0 +1,49 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid #ddd; */
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.text_star {
+    padding-left: 17px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.navbar-label {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+.navbar-filters {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.navbar-item {
+    margin: 0.5rem 0;
+    /* Spacing between filter items */
+}
+
+.navbar-item-price {
+    font-weight: bold;
+    font-size: 14px;
+    color: red;
+}
+
+.navbar-item-checkbox {
+    margin: 10px 0;
+}
+
+.star_star svg {
+    font-size: 13px;
+}
+
+:where(.css-dev-only-do-not-override-1c0na6j).ant-rate .ant-rate-star:not(:last-child) {
+    margin-inline-end: 4px;
+}

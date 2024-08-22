@@ -1,0 +1,130 @@
+.produccpn {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.small_product-img {
+    cursor: pointer;
+    display: flex;
+    padding: 4px;
+    border-radius: 4px;
+    border: 1px solid rgb(235, 235, 240);
+    overflow: hidden;
+}
+
+.image_product {
+    padding: 10px;
+    border: 1px dotted #999999;
+}
+
+.name_product {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.info_product-item {
+    padding: 0 20px;
+}
+
+.rate_product {
+    display: flex;
+    justify-content: flex-start;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+.count_star {
+    padding-right: 10px;
+    color: yellowgreen;
+}
+
+.price_product {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    margin-top: 20px;
+}
+
+.old_price {
+    margin-right: 15px;
+    color: #999999;
+    text-decoration: line-through;
+}
+
+.add_product {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    background: white;
+    gap: 4px;
+    border-top: 1px solid #999999;
+}
+
+.count_product {
+    padding: 20px 0;
+    border-top: 1px solid #999999;
+    font-size: 18px;
+}
+
+.num_count {
+    font-size: 20px;
+    margin: 0 5px;
+}
+
+.title_add,
+.title_count {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.info_add {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.info_add>p {
+    margin-right: 50px;
+}
+
+.time_ship {
+    font-size: 13px;
+}
+
+.time_detail {
+    margin: 0;
+}
+
+.buy {
+    display: flex;
+    border-top: 1px solid #999999;
+    padding: 20px 0;
+}
+
+.buy_now {
+    width: 200px;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #ff424e;
+    border: 1px solid #ff424e;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.buy_later {
+    width: 200px;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 150%;
+    color: rgb(10, 104, 255);
+    border: 1px solid rgb(10, 104, 255);
+    border-radius: 4px;
+}

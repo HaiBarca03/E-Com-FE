@@ -1,0 +1,78 @@
+:where(.css-dev-only-do-not-override-1c0na6j).ant-card .ant-card-body {
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+}
+
+.img_product {
+    height: 250px;
+}
+
+.title_product {
+    align-items: center;
+    font-size: 15px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.rate_product {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+ul.ant-rate {
+    font-size: 15px;
+}
+
+.ant-flex-align-stretch {
+    align-items: center;
+}
+
+.nameProduct {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.buyed {
+    font-size: 13px;
+    color: rgb(96, 97, 99);
+    padding-left: 5px;
+    border-left: 1px solid red;
+}
+
+.price_product {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 700;
+    color: red;
+    padding-right: 10px;
+}
+
+.sale_product {
+    padding: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    background-color: antiquewhite;
+    border-radius: 50%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.des_product {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.des_item {
+    font-size: 10px;
+    background-color: antiquewhite;
+    border: 0.5px solid #bdb4b4;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+}

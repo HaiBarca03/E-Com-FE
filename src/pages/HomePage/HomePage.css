@@ -1,0 +1,51 @@
+.homepage {
+    padding: 0 120px;
+}
+
+.nav_home-page {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    height: 50px;
+}
+
+.btn_more {
+    cursor: pointer;
+    display: inline-block;
+    width: 200px;
+    margin-top: 12px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid rgb(10, 104, 255);
+    color: rgb(10, 104, 255);
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+}
+
+.btn_more:hover {
+    background-color: rgba(0, 96, 255, 0.12) !important;
+    opacity: 1 !important;
+}
+
+.more_product {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.product-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 20px;
+    /* gap: 15px; */
+    /* padding-top: 20px; */
+    /* border-top: 1px solid red; */
+}
+
+.ant-col.ant-col-20.product-item.css-dev-only-do-not-override-1c0na6j {
+    padding: 0 25px;
+}
