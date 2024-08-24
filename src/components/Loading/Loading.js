@@ -3,7 +3,7 @@ import React from 'react'
 
 const Loading = ({ children, isLoading, delay }) => {
     return (
-        <Spin spinning={isLoading} size="small" delay={delay}>
+        <Spin spinning={isLoading} tip="Đang tải sản phẩm...">
             {children}
         </Spin>
     )

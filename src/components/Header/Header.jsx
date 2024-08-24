@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from 'react'
-import { Badge, Button, Col, message, Popover } from 'antd';
+import React, { useEffect, useState } from 'react'
+import { Badge, Col, message, Popover } from 'antd';
 import './Header.css'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -9,6 +9,7 @@ import Search from 'antd/es/input/Search';
 import { logoutUser } from '../../userService/UserService';
 import { useDispatch } from 'react-redux'
 import { resetUser } from '../../redux/slides/userSlide'
+import { searchProduct } from '../../redux/slides/productSlide';
 
 const suffix = (
     <AudioOutlined
@@ -18,19 +19,34 @@ const suffix = (
         }}
     />
 );
-const onSearch = (value, _e, info) => console.log(info?.source, value);
 
 const Header = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
-    console.log('user:', user)
+    const [userName, setUserName] = useState('')
+    const [userAvatar, setUserAvatar] = useState('')
+
+    const onSearch = (value) => {
+        const trimmedValue = value.trim();
+        if (trimmedValue) {
+            dispatch(searchProduct(trimmedValue));
+        } else {
+            dispatch(searchProduct('')); // Reset search để lấy tất cả sản phẩm
+        }
+    }
 
     const handleLogin = () => {
         navigate('/sign-in')
     }
     const handleHome = () => {
         navigate('/')
+    }
+    const handleProfile = () => {
+        navigate('/profile')
+    }
+    const handleAdmin = () => {
+        navigate('/admin')
     }
     const handleLogout = async () => {
         await logoutUser()
@@ -39,12 +55,22 @@ const Header = () => {
         message.success('Đăng xuất thành công!', 3);
         localStorage.setItem("access_token", '');
     }
+
+    useEffect(() => {
+        setUserAvatar(user?.avatar)
+        setUserName(user?.name)
+    }, [user?.name, user?.avatar])
+
     const content = (
         <div>
-            <p className='dropDownMenu' >Profile</p>
+            <p onClick={handleProfile} className='dropDownMenu' >Profile</p>
             <p onClick={handleLogout} className='dropDownMenu' >LogOut</p>
+            {user?.isAdmin === true ? (
+                <p onClick={handleAdmin} className='dropDownMenu' >Admin manager</p>
+            ) : (<div></div>)}
         </div>
     );
+
     return (
         <div>
             <WrapperHeader className="header-wrapper">
@@ -59,17 +85,21 @@ const Header = () => {
                         enterButton="Search"
                         size="large"
                         suffix={suffix}
-                        onSearch={onSearch}
+                        onSearch={onSearch} // Sử dụng sự kiện onSearch
                     />
                 </Col>
                 <Col span={4} className="header-actions">
                     <div className="account-section">
-                        <GithubOutlined className="github-icon" />
-                        {user?.name ?
+                        {userAvatar ? (
+                            <img className="img_avt" src={userAvatar} alt='avt' />
+                        ) :
+                            <GithubOutlined className="github-icon" />
+                        }
+                        {user?.access_token ?
                             (
                                 <>
                                     <Popover placement="bottom" trigger="hover" content={content}>
-                                        <div className="account-text">{user.name}</div>
+                                        <div className="account-text">{userName || 'User'}</div>
                                     </Popover>
                                 </>
                             ) :
@@ -92,7 +122,6 @@ const Header = () => {
                 </Col>
             </WrapperHeader>
         </div>
-
     )
 }
 

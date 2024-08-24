@@ -1,0 +1,138 @@
+.ant-modal {
+    display: flex;
+    justify-content: center;
+    top: 50px;
+}
+
+.ant-modal-content {
+    max-width: 800px;
+    width: 800px;
+}
+
+.ant-modal-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.ant-modal-body {
+    padding: 24px;
+    /* background-color: #f9f9f9; */
+
+}
+
+.ant-form-item-control {
+    max-width: 500px;
+    width: 500px !important;
+}
+
+.ant-form {
+    max-width: 100% !important;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ant-form-item-label {
+    width: 100px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.ant-form-item-label>label {
+    font-weight: bold;
+    color: #333;
+    padding-left: 40px;
+}
+
+.ant-input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #d9d9d9;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+.ant-input:focus {
+    border-color: #40a9ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.ant-btn-primary {
+    background-color: #1890ff;
+    border-color: #1890ff;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.ant-btn-primary:hover {
+    background-color: #40a9ff;
+    border-color: #40a9ff;
+}
+
+/* Form item alignment */
+.ant-form-item {
+    margin-bottom: 16px;
+}
+
+.ant-form-item-control-input-content {
+    text-align: center;
+}
+
+.upload_image {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin-left: 40px;
+    object-fit: cover;
+}
+
+.form_upload_image {
+    display: flex;
+}
+
+.icon_colums {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.icon_colums>.anticon {
+    font-size: 16px;
+    padding: 3px;
+}
+
+.anticon.anticon-delete {
+    margin-right: 20px;
+    color: red;
+}
+
+.anticon.anticon-edit {
+    margin-right: 20px;
+    color: orange;
+}
+
+.icon_colums>.anticon:hover {
+    color: #1890ff;
+    cursor: pointer;
+}
+
+.modal_delete .ant-modal-content {
+    width: 500px;
+}
+
+.delele_text {
+    font-size: 17px;
+    text-align: center;
+}
+
+.delele_ranger {
+    color: red;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 0;
+}

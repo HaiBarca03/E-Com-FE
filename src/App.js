@@ -3,14 +3,15 @@ import axios from 'axios'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { routes } from './routes/routes'
 import Default from './components/Default/Default'
-// import { useQuery } from '@tanstack/react-query'
 import { jwtDecode } from "jwt-decode";
 import { getDetailUser, refreshToken, axiosJWT } from './userService/UserService'
 import { updateUser } from './redux/slides/userSlide'
 import { useDispatch } from 'react-redux'
+import useSelection from 'antd/es/table/hooks/useSelection'
 
 function App() {
   const dispatch = useDispatch()
+  const user = useSelection((state) => state.user)
 
   const handleDetailUser = useCallback(async (id, token) => {
     const res = await getDetailUser(id, token);
@@ -47,25 +48,16 @@ function App() {
     // Do something with request error
     return Promise.reject(error);
   });
-
-
-  // console.log('process.env.BE_API', process.env.BE_API)
-  // const fetchApi = async () => {
-  //   const res = await axios.get(`http://localhost:4000/api/product/all-product`)
-  //   return res.data
-  // }
-  // const query = useQuery({ queryKey: ['todos'], queryFn: fetchApi })
-  // console.log('query', query)
-
   return (
     <div>
       <Router>
         <Routes>
           {routes.map((route, idx) => {
             const Page = route.page
+            const isCheckAdmin = !route.isPrivate || user.isAdmin
             const Layout = route.isShowHeader ? Default : Fragment
             return (
-              <Route key={idx} path={route.path} element={
+              <Route key={idx} path={isCheckAdmin && route.path} element={
                 <Layout>
                   <Page />
                 </Layout>

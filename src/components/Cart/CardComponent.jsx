@@ -1,33 +1,39 @@
 import React, { useState } from 'react'
 import './CardComponent.css'
 import { Card, Flex, Rate } from 'antd';
+import { useNavigate } from 'react-router-dom';
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
-const CardComponent = () => {
-    const [value, setValue] = useState(3);
+const CardComponent = (props) => {
+    const { countInStock, description, image, name, price, rating, type, discount, selled, id } = props
+    const navigate = useNavigate()
+    const handleProductDetail = (id) => {
+        navigate(`/product-detail/${id}`)
+    }
+    const roundedRating = Math.round(rating);
+    const [value, setValue] = useState(roundedRating);
     return (
-        <div className='cart'>
+        <div onClick={() => handleProductDetail(id)} className='cart'>
             <Card
                 hoverable
                 style={{
                     width: 235,
                 }}
-                cover={<img className='img_product' alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+                cover={<img className='img_product' alt="example" src={image} />}
             >
                 <div className='title_product'>
-                    <span className='nameProduct'>Iphone</span>
+                    <span className='nameProduct'>{name}</span>
                 </div>
                 <div className='rate_product'>
-                    {/* <span>4.5</span> */}
+                    <span>{rating}</span>
                     <Flex gap="middle" vertical>
-                        <Rate tooltips={desc} onChange={setValue} value={value} />
-                        {/* {value ? <span>{desc[value - 1]}</span> : null} */}
+                        <Rate allowHalf tooltips={desc} onChange={setValue} value={value} />
                     </Flex>
-                    <div className='buyed'>Da ban 1000</div>
+                    <div className='buyed'>Da ban {discount}</div>
                 </div>
                 <div className='price_product'>
-                    <span className='price'>19.000.000 đ</span>
-                    <span className='sale_product'>-24%</span>
+                    <span className='price'>{price.toLocaleString()} đ</span>
+                    <span className='sale_product'>{selled}%</span>
                 </div>
                 <div className='des_product'>
                     <span className='des_item'>Free ship</span>

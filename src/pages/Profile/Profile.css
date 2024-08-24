@@ -1,0 +1,50 @@
+.profile {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title_profile {
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 5px solid #ccc;
+    border-radius: 5px;
+}
+
+.item_user {
+    width: 60%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid dotted;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.name_item {
+    font-weight: 600;
+    text-align: left;
+    margin-right: 20px;
+    width: 70px;
+}
+
+.input_item {
+    margin-right: 20px;
+}
+
+.img_avt {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.ant-upload-list.ant-upload-list-text {
+    display: none;
+}
