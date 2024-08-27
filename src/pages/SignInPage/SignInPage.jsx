@@ -1,7 +1,7 @@
 import { Col, Input, Row, message } from 'antd'
 import React, { useEffect, useState } from 'react'
 import './SignInPage.css'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import imgSign from '../../assets/img_sign.png'
 import { FacebookFilled, GoogleCircleFilled } from '@ant-design/icons'
@@ -13,6 +13,7 @@ import { updateUser } from '../../redux/slides/userSlide'
 const SignInPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const location = useLocation()
     const handleSignUp = () => {
         navigate('/sign-up')
     }
@@ -55,7 +56,12 @@ const SignInPage = () => {
                 }
                 console.log('decoded: ', decoded)
                 message.success('Đăng nhập thành công!', 3);
-                navigate('/');
+                console.log('locationlogin:', location?.state)
+                if (location?.state) {
+                    navigate(location?.state)
+                } else {
+                    navigate('/');
+                }
             } else {
                 message.error('Tài khoản hoặc mật khẩu ko đúng, vui lòng kiểm tra lại.', 5);
             }

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './CardComponent.css'
 import { Card, Flex, Rate } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { convertPrice } from '../../ultil';
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
 const CardComponent = (props) => {
@@ -32,8 +33,9 @@ const CardComponent = (props) => {
                     <div className='buyed'>Da ban {discount}</div>
                 </div>
                 <div className='price_product'>
-                    <span className='price'>{price.toLocaleString()} đ</span>
-                    <span className='sale_product'>{selled}%</span>
+                    <span className='price'>{convertPrice(price)}</span>
+                    {/* <span className='price'>{price} đ</span> */}
+                    <span className='sale_product'>{discount}%</span>
                 </div>
                 <div className='des_product'>
                     <span className='des_item'>Free ship</span>

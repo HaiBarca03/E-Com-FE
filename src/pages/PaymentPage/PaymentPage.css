@@ -1,0 +1,159 @@
+.payment_page {
+    background-color: #fafafa;
+    height: 100vh;
+    padding: 0 120px;
+}
+
+.title_payment-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.payment_wrapper {
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.col_item {
+    padding: 20px;
+}
+
+.title_payment-item {
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.col_right-top {
+    padding: 20px 20px 0 20px;
+}
+
+.info_ship {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add_ship-hash {
+    width: 100%;
+}
+
+.col_right {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.col_right-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.title_right-item {
+    font-weight: 500;
+}
+
+.price_sum {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+.price_vat {
+    font-style: italic;
+    font-size: 13px;
+    text-align: end;
+}
+
+.btn_buy-order {
+    display: flex;
+    justify-content: center;
+}
+
+.btn_buy-order>.now_buy-order.ant-btn {
+    border: none;
+    padding: 8x 18px;
+    font-size: 16px;
+    background-color: red;
+}
+
+.btn_num-count {
+    display: flex;
+    align-items: center;
+}
+
+.btn_num-count>.num_count {
+    font-size: 13px;
+    margin: 0 5px;
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+}
+
+.remove_order {
+    margin-top: 20px;
+    width: 100px;
+    padding-left: 20px;
+}
+
+.col_right,
+.payment_method {
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+}
+
+.product-table {
+    margin-bottom: 16px;
+    /* Space below the header */
+    border-bottom: 2px solid #e0e0e0;
+    /* Separator line for the header */
+}
+
+.product-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    /* Padding for each row */
+    align-items: center;
+    /* Center vertically */
+    transition: background-color 0.3s;
+    /* Smooth transition for hover effect */
+}
+
+.product-row:nth-child(even) {
+    background-color: #f9f9f9;
+    /* Light grey for even rows */
+}
+
+.product-row:hover {
+    background-color: #e0f7fa;
+    /* Light blue on hover */
+}
+
+strong {
+    color: #333;
+    /* Darker color for headers */
+}
+
+.title_right-item {
+    font-weight: bold;
+    font-size: 16px;
+    color: #444;
+    /* Color for customer information titles */
+}
+
+.col_right-item {
+    margin-bottom: 8px;
+    /* Space between customer info items */
+}

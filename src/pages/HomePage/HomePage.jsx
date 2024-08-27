@@ -4,16 +4,16 @@ import TypeProducts from '../../components/TypeProducts/TypeProducts'
 import SliderComponent from '../../components/Slider/Slider'
 import CardComponent from '../../components/Cart/CardComponent'
 import Navbar from '../../components/NavBar/Navbar'
-import { getAllProduct } from '../../userService/ProductService'
+import { getAllProduct, getAllType } from '../../userService/ProductService'
 import { useQuery } from '@tanstack/react-query'
 import { useSelector } from 'react-redux'
 import { Spin } from 'antd'
 import Loading from '../../components/Loading/Loading'
 
 const HomePage = () => {
-    const arr = ['TV', 'Tủ lạnh', 'LapTop']
     const searchProduct = useSelector((state) => state?.product?.search)
     const [limit, setLimit] = useState(5)
+    const [dateType, setDataType] = useState([])
     const [stateProducts, setStateProducts] = useState([])
     const refSearch = useRef()
 
@@ -25,6 +25,11 @@ const HomePage = () => {
         return res
     };
 
+    const { isLoading, data: products } = useQuery({
+        queryKey: ['products', limit, searchProduct],
+        queryFn: () => fetchProductAll(limit, searchProduct),
+        keepPreviousData: true,
+    });
     // useEffect(() => {
     //     if (refSearch.current) {
     //         fetchProductAll(searchProduct)
@@ -32,11 +37,6 @@ const HomePage = () => {
     //     refSearch.current = true
     // }, [searchProduct])
 
-    const { isLoading, data: products } = useQuery({
-        queryKey: ['products', limit, searchProduct],
-        queryFn: () => fetchProductAll(limit, searchProduct),
-        keepPreviousData: true,
-    });
 
     // useEffect(() => {
     //     if (products?.data?.length > 0) {
@@ -44,12 +44,23 @@ const HomePage = () => {
     //     }
     // }, [products])
     console.log('data products: ', products)
+
+    const fetchAllType = async () => {
+        const res = await getAllType()
+        setDataType(res?.data)
+    }
+    useEffect(() => {
+        fetchAllType()
+    }, [])
     return (
         <div className='homepage'>
             <div className='nav_home-page'>
-                {arr.map((item) => {
+                {dateType.map((item) => {
                     return (
-                        <TypeProducts name={item} key={item} />
+                        <>
+                            <TypeProducts name={item} key={item} />
+                            <span className='cross_nav'>|</span>
+                        </>
                     )
                 })}
             </div>

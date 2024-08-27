@@ -1,5 +1,16 @@
 .product_detail {
-    padding: 0 120px;
+    padding: 20px 120px;
     background-color: #efefef;
     padding-bottom: 100px;
+    font-style: italic;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.nav_product>span {
+    font-weight: bold;
+}
+
+.nav_product>span:hover {
+    color: blue;
 }

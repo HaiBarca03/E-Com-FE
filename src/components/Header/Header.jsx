@@ -24,6 +24,7 @@ const Header = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
+    const order = useSelector((state) => state.order)
     const [userName, setUserName] = useState('')
     const [userAvatar, setUserAvatar] = useState('')
 
@@ -48,6 +49,12 @@ const Header = () => {
     const handleAdmin = () => {
         navigate('/admin')
     }
+    const handleOrder = () => {
+        navigate('/order')
+    }
+    const handleMyOrder = () => {
+        navigate(`/my-order/${user.id}`)
+    }
     const handleLogout = async () => {
         await logoutUser()
         dispatch(resetUser())
@@ -65,6 +72,7 @@ const Header = () => {
         <div>
             <p onClick={handleProfile} className='dropDownMenu' >Profile</p>
             <p onClick={handleLogout} className='dropDownMenu' >LogOut</p>
+            <p onClick={handleMyOrder} className='dropDownMenu' >Đơn hàng của tôi</p>
             {user?.isAdmin === true ? (
                 <p onClick={handleAdmin} className='dropDownMenu' >Admin manager</p>
             ) : (<div></div>)}
@@ -115,8 +123,8 @@ const Header = () => {
                 </Col>
                 <Col span={2}>
                     <div className="cart-section">
-                        <Badge count={4} size='small'>
-                            <ShoppingCartOutlined className="cart-icon" />
+                        <Badge count={order?.orderItems?.length} size='small'>
+                            <ShoppingCartOutlined onClick={handleOrder} className="cart-icon" />
                         </Badge>
                     </div>
                 </Col>

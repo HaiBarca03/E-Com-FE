@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Button, Form, Input, message, Modal, Space, Upload } from 'antd'
+import { Button, Form, Input, message, Modal, Select, Space, Upload } from 'antd'
 import './AdminProduct.css'
 import TableCpn from '../TableCpn/TableCpn'
-import { getBase64 } from '../../ultil'
+import { getBase64, renderOptions } from '../../ultil'
 import { useMutationHooks } from '../../hooks/useMutationHook'
 import { DeleteOutlined, EditOutlined, PlusOutlined, SearchOutlined, UploadOutlined } from '@ant-design/icons'
-import { createProduct, deleteManyProduct, deleteProduct, getAllProduct, getDetailProduct, updateProduct } from '../../userService/ProductService';
+import { createProduct, deleteManyProduct, deleteProduct, getAllProduct, getAllType, getDetailProduct, updateProduct } from '../../userService/ProductService';
 import { useQuery } from '@tanstack/react-query'
 import DrawerCpn from '../DrawerCpn/DrawerCpn'
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,6 +21,7 @@ const AdminProduct = () => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user)
     const [searchText, setSearchText] = useState('');
+    const [selectType, setselectType] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const searchInput = useRef(null);
     const handleSearch = (selectedKeys, confirm, dataIndex) => {
@@ -41,6 +42,8 @@ const AdminProduct = () => {
         rating: '',
         description: '',
         selled: '',
+        discount: '',
+        sold: '',
     })
 
     const [stateProductDetail, setStateProductDetail] = useState({
@@ -52,6 +55,8 @@ const AdminProduct = () => {
         rating: '',
         description: '',
         selled: '',
+        discount: '',
+        sold: '',
     })
     const renderAction = () => {
         return (
@@ -144,6 +149,8 @@ const AdminProduct = () => {
                 rating: res.data.rating,
                 description: res.data.description,
                 selled: res.data.selled,
+                discount: res.data.discount,
+                sold: res.data.sold,
             });
         }
         return res;
@@ -160,6 +167,7 @@ const AdminProduct = () => {
             form.setFieldValue('rating', stateProductDetail.rating);
             form.setFieldValue('description', stateProductDetail.description);
             form.setFieldValue('selled', stateProductDetail.selled);
+            form.setFieldValue('discount', stateProductDetail.discount);
         }
     }, [form, stateProductDetail])
 
@@ -316,13 +324,30 @@ const AdminProduct = () => {
             ...getColumnSearchProps('type'),
         },
         {
-            title: 'Price',
+            title: 'Discount',
+            dataIndex: 'discount',
+            sorter: (a, b) => a.discount - b.discount,
+        },
+        {
+            title: 'Price (đ)',
             dataIndex: 'price',
             sorter: (a, b) => a.price - b.price,
             ...getColumnSearchProps('price'),
         },
         {
-            title: 'Rating',
+            title: 'Selled',
+            dataIndex: 'selled',
+            sorter: (a, b) => a.selled - b.selled,
+            ...getColumnSearchProps('selled'),
+        },
+        {
+            title: 'Count In Stock',
+            dataIndex: 'countInStock',
+            sorter: (a, b) => a.countInStock - b.countInStock,
+            ...getColumnSearchProps('countInStock'),
+        },
+        {
+            title: 'Rating (*)',
             dataIndex: 'rating',
             sorter: (a, b) => a.rating - b.rating,
             filters: [
@@ -362,12 +387,6 @@ const AdminProduct = () => {
             }
         },
         {
-            title: 'Count In Stock',
-            dataIndex: 'countInStock',
-            sorter: (a, b) => a.countInStock - b.countInStock,
-            ...getColumnSearchProps('countInStock'),
-        },
-        {
             title: 'Action',
             dataIndex: 'action',
             render: renderAction
@@ -387,7 +406,9 @@ const AdminProduct = () => {
                 countInStock: stateProduct.countInStock,
                 rating: stateProduct.rating,
                 description: stateProduct.description,
-                selled: stateProduct.selled
+                selled: stateProduct.selled,
+                discount: stateProduct.discount,
+                sold: stateProduct.sold
             })
             if (response.success) {
                 message.success('Cập nhật thành công!', 3);
@@ -490,6 +511,27 @@ const AdminProduct = () => {
 
     const { data } = mutation
     console.log('data profile: ', data)
+    // select
+    const fetchAllType = async () => {
+        const res = await getAllType()
+        return res
+    }
+    const { data: typeProducts } = useQuery({
+        queryKey: ['typeProducts'],
+        queryFn: fetchAllType,
+    })
+    // console.log('typeProducts', typeProducts)
+    const handleOnChangeSelectType = (value) => {
+        setselectType(value)
+        if (value !== 'add_type') {
+            setStateProduct({
+                ...stateProduct,
+                type: value
+            })
+        } else {
+            setselectType(value)
+        }
+    }
     return (
         <div className='admin_user'>
             <div className='title_admin'>Products manager</div>
@@ -539,16 +581,33 @@ const AdminProduct = () => {
                     </Form.Item>
 
                     <Form.Item
-                        label="type"
+                        label="Type"
                         name="type"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your password!',
+                                message: 'Please select or add a type!',
                             },
                         ]}
                     >
-                        <Input value={stateProduct.type} onChange={handleOnChange} name='type' />
+                        <Select
+                            name='type'
+                            value={selectType}
+                            showSearch
+                            placeholder="Select or add a type"
+                            optionFilterProp="label"
+                            onChange={handleOnChangeSelectType}
+                            options={renderOptions(typeProducts?.data)}
+                        />
+                        {selectType === 'New Type' && (
+                            <Input
+                                style={{ marginTop: '8px' }}
+                                value={stateProduct.type}
+                                onChange={handleOnChange}
+                                name='type'
+                                placeholder="Enter new type"
+                            />
+                        )}
                     </Form.Item>
 
                     <Form.Item
@@ -603,7 +662,7 @@ const AdminProduct = () => {
                         <Input value={stateProduct.description} onChange={handleOnChange} name='description' />
                     </Form.Item>
 
-                    <Form.Item
+                    {/* <Form.Item
                         label="selled"
                         name="selled"
                         rules={[
@@ -614,6 +673,19 @@ const AdminProduct = () => {
                         ]}
                     >
                         <Input value={stateProduct.selled} onChange={handleOnChange} name='selled' />
+                    </Form.Item> */}
+
+                    <Form.Item
+                        label="discount"
+                        name="discount"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your discount!',
+                            },
+                        ]}
+                    >
+                        <Input value={stateProduct.discount} onChange={handleOnChange} name='discount' />
                     </Form.Item>
 
                     <Form.Item
@@ -705,6 +777,19 @@ const AdminProduct = () => {
                             ]}
                         >
                             <Input value={stateProductDetail.price} onChange={handleOnChangeDetail} name='price' />
+                        </Form.Item>
+
+                        <Form.Item
+                            label="discount"
+                            name="discount"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your password!',
+                                },
+                            ]}
+                        >
+                            <Input value={stateProductDetail.discount} onChange={handleOnChangeDetail} name='discount' />
                         </Form.Item>
 
                         <Form.Item

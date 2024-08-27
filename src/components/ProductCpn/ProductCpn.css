@@ -86,6 +86,8 @@
 
 .info_add>p {
     margin-right: 50px;
+    margin-left: 10px;
+    font-weight: bold;
 }
 
 .time_ship {

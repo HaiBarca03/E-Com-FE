@@ -1,0 +1,16 @@
+.type-products {
+    padding: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.type-products:hover {
+    color: #007bff;
+    cursor: pointer;
+    transform: translateY(-2px);
+}

@@ -136,3 +136,17 @@
     font-weight: bold;
     padding: 10px 0;
 }
+
+.ant-select-item-option.add-type-option {
+    background-color: #1890ff;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+.ant-select-item-option.add-type-option:hover {
+    background-color: #40a9ff;
+    color: white;
+}

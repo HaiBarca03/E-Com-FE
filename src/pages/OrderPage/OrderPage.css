@@ -1,0 +1,112 @@
+.title_order-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.order_page {
+    background-color: #fafafa;
+    height: 100vh;
+    padding: 0 120px;
+}
+
+.order_page>.order_wrapper {
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.col_item-left {
+    padding: 20px;
+}
+
+.image_render>img {
+    object-fit: cover;
+}
+
+.col_right-top {
+    padding: 20px 20px 0 20px;
+}
+
+.info_ship {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.add_ship {
+    width: 70%;
+    overflow: hidden;
+}
+
+.changeAdd {
+    cursor: pointer;
+    color: blueviolet;
+
+}
+
+.col_right {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.col_right-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.title_right-item {
+    font-weight: 500;
+}
+
+.price_sum {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
+
+.price_vat {
+    font-style: italic;
+    font-size: 13px;
+    text-align: end;
+}
+
+.btn_buy-order {
+    display: flex;
+    justify-content: center;
+}
+
+.btn_buy-order>.now_buy-order.ant-btn {
+    border: none;
+    padding: 8x 18px;
+    font-size: 16px;
+    background-color: red;
+}
+
+.btn_num-count {
+    display: flex;
+    align-items: center;
+}
+
+.btn_num-count>.num_count {
+    font-size: 13px;
+    margin: 0 5px;
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+}
+
+.remove_order {
+    margin-top: 20px;
+    width: 100px;
+    padding-left: 20px;
+}

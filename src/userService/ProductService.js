@@ -11,6 +11,16 @@ export const getAllProduct = async (search, limit) => {
     return res.data
 }
 
+export const getTypeProduct = async (type, page, limit) => {
+    let res = {}
+    if (type) {
+        res = await axios.get(`http://localhost:4000/api/product/all-product?filter=type&filter=${type}&page=${page - 1}&limit=${limit}`)
+    } else {
+        res = await axios.get(`http://localhost:4000/api/product/all-product?filter=type&filter=${type}`)
+    }
+    return res.data
+}
+
 export const createProduct = async (data) => {
     const res = await axios.post(`http://localhost:4000/api/product/create-product`, data)
     return res.data
@@ -44,5 +54,9 @@ export const deleteManyProduct = async (data, access_token) => {
             token: `Beare ${access_token}`
         }
     })
+    return res.data
+}
+export const getAllType = async () => {
+    const res = await axios.get(`http://localhost:4000/api/product/all-type`)
     return res.data
 }
