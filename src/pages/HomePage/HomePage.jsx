@@ -7,7 +7,7 @@ import Navbar from '../../components/NavBar/Navbar'
 import { getAllProduct, getAllType } from '../../userService/ProductService'
 import { useQuery } from '@tanstack/react-query'
 import { useSelector } from 'react-redux'
-import { Spin } from 'antd'
+import { Col, Row, Spin } from 'antd'
 import Loading from '../../components/Loading/Loading'
 
 const HomePage = () => {
@@ -30,19 +30,6 @@ const HomePage = () => {
         queryFn: () => fetchProductAll(limit, searchProduct),
         keepPreviousData: true,
     });
-    // useEffect(() => {
-    //     if (refSearch.current) {
-    //         fetchProductAll(searchProduct)
-    //     }
-    //     refSearch.current = true
-    // }, [searchProduct])
-
-
-    // useEffect(() => {
-    //     if (products?.data?.length > 0) {
-    //         setStateProducts(products?.data)
-    //     }
-    // }, [products])
     console.log('data products: ', products)
 
     const fetchAllType = async () => {
@@ -65,28 +52,35 @@ const HomePage = () => {
                 })}
             </div>
             <SliderComponent />
-            <Loading isLoading={isLoading} tip="Đang tải sản phẩm..."> {/* Bao toàn bộ nội dung sản phẩm bằng Spin */}
-                <div className='product-item'>
-                    {products?.data?.map((product) => {
-                        return (
-                            <CardComponent
-                                key={product._id}
-                                countInStock={product.countInStock}
-                                description={product.description}
-                                image={product.image}
-                                name={product.name}
-                                price={product.price}
-                                rating={product.rating}
-                                type={product.type}
-                                discount={product.discount}
-                                selled={product.selled}
-                                id={product._id}
-                            />
-                        )
-                    })}
-                </div>
-            </Loading>
-            <Navbar />
+            <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Col className="col_item" style={{ backgroundColor: '#fff' }} span={4}>
+                    <Navbar />
+                </Col>
+                <Col span={19}>
+                    <Loading isLoading={isLoading} tip="Đang tải sản phẩm..."> {/* Bao toàn bộ nội dung sản phẩm bằng Spin */}
+                        <div className='product-item'>
+                            {products?.data?.map((product) => {
+                                return (
+                                    <CardComponent
+                                        key={product._id}
+                                        countInStock={product.countInStock}
+                                        description={product.description}
+                                        image={product.image}
+                                        name={product.name}
+                                        price={product.price}
+                                        rating={product.rating}
+                                        type={product.type}
+                                        discount={product.discount}
+                                        selled={product.selled}
+                                        sold={product.sold}
+                                        id={product._id}
+                                    />
+                                )
+                            })}
+                        </div>
+                    </Loading>
+                </Col>
+            </Row>
             <div className='more_product'>
                 <button onClick={() => setLimit((prev) => prev + 5)} className='btn_more' >Xem Thêm</button>
             </div>

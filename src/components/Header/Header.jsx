@@ -10,6 +10,7 @@ import { logoutUser } from '../../userService/UserService';
 import { useDispatch } from 'react-redux'
 import { resetUser } from '../../redux/slides/userSlide'
 import { searchProduct } from '../../redux/slides/productSlide';
+import logo_shop from '../../assets/l.png';
 
 const suffix = (
     <AudioOutlined
@@ -82,10 +83,9 @@ const Header = () => {
     return (
         <div>
             <WrapperHeader className="header-wrapper">
-                <Col span={6} className="header-item">
-                    <span onClick={handleHome} className="header-title">
-                        BuyNow
-                    </span>
+                <Col onClick={handleHome} span={6} style={{ cursor: 'pointer' }} className="header-item">
+                    <img style={{ width: '70px', height: 'auto', color: '#fff' }} src={logo_shop} alt="logo" />
+                    <span style={{ color: '#fff', fontSize: '20px', fontWeight: 'bold', textAlign: 'center' }}>DucHai Shop</span>
                 </Col>
                 <Col span={12} className="header-search">
                     <Search

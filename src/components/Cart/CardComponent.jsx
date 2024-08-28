@@ -6,7 +6,7 @@ import { convertPrice } from '../../ultil';
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
 const CardComponent = (props) => {
-    const { countInStock, description, image, name, price, rating, type, discount, selled, id } = props
+    const { countInStock, description, image, name, price, rating, type, discount, selled, sold, id } = props
     const navigate = useNavigate()
     const handleProductDetail = (id) => {
         navigate(`/product-detail/${id}`)
@@ -30,7 +30,7 @@ const CardComponent = (props) => {
                     <Flex gap="middle" vertical>
                         <Rate allowHalf tooltips={desc} onChange={setValue} value={value} />
                     </Flex>
-                    <div className='buyed'>Da ban {discount}</div>
+                    <div className='buyed'>Da ban {sold ? sold : 0}</div>
                 </div>
                 <div className='price_product'>
                     <span className='price'>{convertPrice(price)}</span>

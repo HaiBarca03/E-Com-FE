@@ -14,6 +14,7 @@ import { addOrderProduct } from '../../redux/slides/orderSlide';
 import { convertPrice } from '../../ultil';
 
 const ProductCpn = ({ idProduct }) => {
+    console.log('idProduct', idProduct)
     const user = useSelector((state) => state.user)
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -129,7 +130,7 @@ const ProductCpn = ({ idProduct }) => {
                                 <p className='title_add'>Thông tin vận chuyển</p>
                                 <div className='info_add'>
                                     <span>Giao đến</span><p className=''> {user.address}</p>
-                                    <a href="test">Đổi</a>
+                                    <a href="/profile">Đổi</a>
                                 </div>
                                 <div className="time_ship">
                                     <CarOutlined /> <span>Dự kiến giao ngày {formattedDate}</span>

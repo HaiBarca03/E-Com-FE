@@ -46,3 +46,14 @@
 :where(.css-dev-only-do-not-override-1c0na6j).ant-rate .ant-rate-star:not(:last-child) {
     margin-inline-end: 4px;
 }
+
+.item_cate {
+    margin: 10px 0;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.item_cate:hover {
+    color: blue;
+    transform: scaleY(1.1);
+}

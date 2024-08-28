@@ -27,3 +27,8 @@ export const deleteOrderUser = async (id, data, access_token) => {
     })
     return res.data
 }
+
+export const updateOrderPaid = async (id) => {
+    const res = await axiosJWT.put(`http://localhost:4000/api/order/update-order/${id}`)
+    return res.data
+}

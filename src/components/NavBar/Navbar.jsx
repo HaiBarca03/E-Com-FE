@@ -39,13 +39,20 @@ const Navbar = () => {
 
     return (
         <div className="navbar">
-            <div className="navbar-label">Lable</div>
+            <div className="navbar-label">Danh mục shop</div>
+            <div className="list_cate">
+                <li className="item_cate">Hàng mới nhất</li>
+                <li className="item_cate">Hàng flash sale</li>
+                <li className="item_cate">Hàng mua nhất</li>
+                <li className="item_cate">Hàng chính hãng</li>
+                <li className="item_cate">Bạn cũng có thể thích</li>
+            </div>
             <div className="navbar-filters">
-                {renderContent('text', ['Tủ lạnh', 'TV', 'Máy giặt'])}
+                {/* {renderContent('text', ['Tủ lạnh', 'TV', 'Máy giặt'])}
                 {renderContent('checkbox', [
                     { value: 'a', lable: 'A' },
                     { value: 'b', lable: 'B' },
-                ])}
+                ])} */}
                 {renderContent('star', ['3', '4', '5'])}
                 {renderContent('price', ['Từ 100.000đ', 'Từ 1.000.000đ', 'Từ 5.000.000đ'])}
             </div>

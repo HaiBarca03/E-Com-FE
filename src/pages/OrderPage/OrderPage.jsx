@@ -119,6 +119,12 @@ const OrderPage = () => {
             setisModalOpenOrder(true)
         } else {
             navigate('/payment', { state: { selectedItems } });
+            selectedItems.forEach((item) => {
+                dispatch(removeOrderProduct({ idProduct: item.product }));
+            });
+
+            // Reset the selected items after removal
+            setSelectedRowKeys([]);
         }
     }
     const onChangeAddress = () => {

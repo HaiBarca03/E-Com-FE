@@ -116,3 +116,9 @@ p.dropDownMenu:hover {
     object-fit: cover;
     margin-right: 10px;
 }
+
+.ant-col.ant-col-6.header-item.css-dev-only-do-not-override-1c0na6j {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}

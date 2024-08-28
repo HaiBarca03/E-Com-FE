@@ -6,6 +6,7 @@ import { updateUser, getDetailUser } from '../../userService/UserService';
 import { useMutationHooks } from '../../hooks/useMutationHook';
 import { UploadOutlined } from '@ant-design/icons';
 import { getBase64 } from '../../ultil';
+import Loading from '../../components/Loading/Loading';
 
 const Profile = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Profile = () => {
     const [phone, setphone] = useState('')
     const [address, setaddress] = useState('')
     const [avatar, setavatar] = useState('')
+    const [isLoading, setisLoading] = useState(false)
 
     const mutation = useMutationHooks(
         async (data) => {
@@ -36,14 +38,6 @@ const Profile = () => {
     )
     const { data } = mutation
     console.log('data profile: ', data)
-
-    useEffect(() => {
-        setname(user?.name)
-        setemail(user?.email)
-        setphone(user?.phone)
-        setaddress(user?.address)
-        setavatar(user?.avatar)
-    }, [user])
 
     const handleDetailUser = async (id, token) => {
         const res = await getDetailUser(id, token)
@@ -70,6 +64,7 @@ const Profile = () => {
         setavatar(file.preview)
     }
     const onChangeUpdate = async () => {
+        setisLoading(true)
         if (user?.id) {
             await mutation.mutateAsync({
                 id: user.id,
@@ -80,56 +75,69 @@ const Profile = () => {
                 avatar,
                 access_token: user?.access_token
             });
+            message.success('Cập nhật thành công!', 3);
             console.log('update:', name, email, phone, address, avatar);
+            setisLoading(false)
         } else {
             message.error('Access token not found, please try again.', 5);
+            message.error('Cập nhật thất bại!', 3);
         }
     };
+
+    useEffect(() => {
+        setname(user?.name)
+        setemail(user?.email)
+        setphone(user?.phone)
+        setaddress(user?.address)
+        setavatar(user?.avatar)
+    }, [user])
 
     return (
         <div className='profile'>
             <h3 className='title_profile'>Thông tin người dùng</h3>
-            <div className="list_item-user">
-                <div className="item_user">
-                    <div className='name_item'>Name</div>
-                    <Input className='input_item' value={name} onChange={onChangeHandlerName} placeholder="abc@gmail.com" />
-                    <Button onClick={onChangeUpdate} className='btn_item' type="primary" danger>
-                        Cập nhật
-                    </Button>
+            <Loading isLoading={isLoading}>
+                <div className="list_item-user">
+                    <div className="item_user">
+                        <div className='name_item'>Name</div>
+                        <Input className='input_item' value={name} onChange={onChangeHandlerName} placeholder="abc@gmail.com" />
+                        <Button onClick={onChangeUpdate} className='btn_item' type="primary" danger>
+                            Cập nhật
+                        </Button>
+                    </div>
+                    <div className="item_user">
+                        <div className='name_item'>Email</div>
+                        <Input className='input_item' value={email} onChange={onChangeHandlerEmail} placeholder="abc@gmail.com" />
+                        <Button onClick={onChangeUpdate} className='btn_item' type="primary" danger>
+                            Cập nhật
+                        </Button>
+                    </div>
+                    <div className="item_user">
+                        <div className='name_item'>Phone</div>
+                        <Input className='input_item' value={phone} onChange={onChangeHandlerPhone} placeholder="abc@gmail.com" />
+                        <Button onClick={onChangeUpdate} className='btn_item' type="primary" danger>
+                            Cập nhật
+                        </Button>
+                    </div>
+                    <div className="item_user">
+                        <div className='name_item'>Address</div>
+                        <Input className='input_item' value={address} onChange={onChangeHandlerAddress} placeholder="abc@gmail.com" />
+                        <Button onClick={onChangeUpdate} className='btn_item' type="primary" danger>
+                            Cập nhật
+                        </Button>
+                    </div>
+                    <div className="item_user">
+                        <div className='name_item'>Avatar</div>
+                        <Upload maxCount={1} onChange={onChangeHandlerAvatar}>
+                            <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                        </Upload>
+                        <img src={avatar} alt="avatar" className="img_avt" />
+                        {/* <Input className='input_item' value={avatar} onChange={onChangeHandlerAvatar} placeholder="abc@gmail.com" /> */}
+                        <Button onClick={onChangeUpdate} className='btn_item' type="primary" danger>
+                            Cập nhật
+                        </Button>
+                    </div>
                 </div>
-                <div className="item_user">
-                    <div className='name_item'>Email</div>
-                    <Input className='input_item' value={email} onChange={onChangeHandlerEmail} placeholder="abc@gmail.com" />
-                    <Button onClick={onChangeUpdate} className='btn_item' type="primary" danger>
-                        Cập nhật
-                    </Button>
-                </div>
-                <div className="item_user">
-                    <div className='name_item'>Phone</div>
-                    <Input className='input_item' value={phone} onChange={onChangeHandlerPhone} placeholder="abc@gmail.com" />
-                    <Button onClick={onChangeUpdate} className='btn_item' type="primary" danger>
-                        Cập nhật
-                    </Button>
-                </div>
-                <div className="item_user">
-                    <div className='name_item'>Address</div>
-                    <Input className='input_item' value={address} onChange={onChangeHandlerAddress} placeholder="abc@gmail.com" />
-                    <Button onClick={onChangeUpdate} className='btn_item' type="primary" danger>
-                        Cập nhật
-                    </Button>
-                </div>
-                <div className="item_user">
-                    <div className='name_item'>Avatar</div>
-                    <Upload maxCount={1} onChange={onChangeHandlerAvatar}>
-                        <Button icon={<UploadOutlined />}>Click to Upload</Button>
-                    </Upload>
-                    <img src={avatar} alt="avatar" className="img_avt" />
-                    {/* <Input className='input_item' value={avatar} onChange={onChangeHandlerAvatar} placeholder="abc@gmail.com" /> */}
-                    <Button onClick={onChangeUpdate} className='btn_item' type="primary" danger>
-                        Cập nhật
-                    </Button>
-                </div>
-            </div>
+            </Loading>
 
             {/* <div className="list_item-user">
                 {[
