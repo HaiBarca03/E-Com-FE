@@ -48,13 +48,12 @@
     /* margin-bottom: 30px; */
 }
 
-.write_cmt {
+/* .write_cmt {
     display: flex;
     width: 80%;
-}
+} */
 
-.right_cmt,
-.add_cmt {
+.right_cmt {
     margin-left: 20px;
 }
 

@@ -72,11 +72,11 @@ const Header = () => {
     const content = (
         <div>
             <p onClick={handleProfile} className='dropDownMenu' >Profile</p>
-            <p onClick={handleLogout} className='dropDownMenu' >LogOut</p>
             <p onClick={handleMyOrder} className='dropDownMenu' >Đơn hàng của tôi</p>
             {user?.isAdmin === true ? (
                 <p onClick={handleAdmin} className='dropDownMenu' >Admin manager</p>
             ) : (<div></div>)}
+            <p onClick={handleLogout} className='dropDownMenu' >LogOut</p>
         </div>
     );
 

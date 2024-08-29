@@ -1,20 +1,12 @@
 import { Menu } from 'antd'
 import React, { useState } from 'react'
-import { ProductOutlined, ShopOutlined, UsergroupAddOutlined } from '@ant-design/icons';
+import { CheckCircleOutlined, ProductOutlined, ShopOutlined, UndoOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import AdminUser from '../../components/AdminUser/AdminUser';
 import AdminProduct from '../../components/AdminProduct/AdminProduct';
+import OrderAdmin from '../../components/AdminOrder/AdminOrder';
+import AdminFeedback from '../../components/AdminFeedback/AdminFeedback';
 
 const items = [
-    {
-        key: 'nameShop',
-        icon: <ShopOutlined />,
-        label: 'BuyNow',
-    },
-    {
-        key: 'nameAcc',
-        icon: <UsergroupAddOutlined />,
-        label: 'Admin',
-    },
     {
         key: 'user',
         icon: <UsergroupAddOutlined />,
@@ -52,7 +44,17 @@ const items = [
         //         label: 'Option 2',
         //     }
         // ]
-    }
+    },
+    {
+        key: 'order',
+        icon: <CheckCircleOutlined />,
+        label: 'Order',
+    },
+    {
+        key: 'feedback',
+        icon: <UndoOutlined />,
+        label: 'Feedback',
+    },
 ];
 // const getLevelKeys = (items1) => {
 //     const key = {};
@@ -81,6 +83,14 @@ const AdminPage = () => {
             case 'product':
                 return (
                     <AdminProduct />
+                )
+            case 'order':
+                return (
+                    <OrderAdmin />
+                )
+            case 'feedback':
+                return (
+                    <AdminFeedback />
                 )
         }
     }

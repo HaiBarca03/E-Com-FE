@@ -86,11 +86,11 @@ const ReviewComponents = ({ idProduct }) => {
                     <Divider />
                     <Row>
                         <Col className='col_left' span={10}>
-                            <div className="write_cmt">
-                                <div className="avatar_user">
+                            <Row className="write_cmt">
+                                <Col span={5} className="avatar_user">
                                     <img className='user_img' src={user?.avatar} alt="avt" />
-                                </div>
-                                <div className='add_cmt'>
+                                </Col>
+                                <Col span={18} className='add_cmt'>
                                     <p className='user_name'>{user?.name}</p>
                                     <Rate className='rate_product' onChange={(value) => setRating(value)} value={rating} />
                                     <Input.TextArea
@@ -107,8 +107,8 @@ const ReviewComponents = ({ idProduct }) => {
                                         </Upload>
                                     </div>
                                     <Button type="primary" onClick={onAddCmt}>Thêm bình luận</Button>
-                                </div>
-                            </div>
+                                </Col>
+                            </Row>
                             <Divider />
                         </Col>
                         <Col span={14}>
